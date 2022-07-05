@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    @if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+    
+    <form method="post" asp-action="LogOut" asp-controller = "Account">
+        <input type = "submit" value="Exit"></input>
+    </form>
+}
+
+
+@if(!User.Identity.IsAuthenticated)
+{
+    <p>Вы не авторизированны</p>
+ 
+}
+
+   
+
+@*<div>
+    <a asp-area = "" asp-controller="Home" asp-action = "SendEmailDefault">Отправить сообщение через 1</a>
+</div>
+
+<div>
+    <a asp-area = "" asp-controller="Home" asp-action = "SendEmailCustom">Отправить сообщение через 2</a>
+</div>
+*@
+
+
+<div class="text-center">
+    <h1 class="display-4">Конференция начинается в @DateTime.Today</h1>
+   
+    <a class="nav-link text-dark" asp-area="" asp-controller="Conference" asp-action="Index">Ссылка на программу конференции</a>
+   
+    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Ссылка на вход</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Ссылка на регистрацию</a>
+               
+    <form method="post" asp-action="LogOut" asp-controller = "Account">
+        <input type = "submit" value="Выйти из аккаунта"></input>
+    </form>
+
+</div>
+
